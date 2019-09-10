@@ -1,5 +1,8 @@
 #include <stdlib.h>
 #include <GL/glut.h>
+#include <iostream>
+
+using namespace std;
 
 // инициализация переменных цвета в 1.0
 // треугольник - белый
@@ -39,7 +42,7 @@ void renderScene(void) {
     glRotatef(angle, 0.0f, 1.0f, 0.0f);
     // установить цвет модели
     glColor3f(red,green,blue);
-    glBegin(GL_TRIANGLES);
+    glBegin(GL_LINE_LOOP);
     glVertex3f(-2.0f,-2.0f, 0.0f);
     glVertex3f( 0.0f, 2.0f, 0.0);
     glVertex3f( 2.0f,-2.0f, 0.0);
@@ -74,6 +77,8 @@ void processSpecialKeys(int key, int x, int y) {
     }
 }
 
+
+
 int main(int argc, char **argv) {
 
     // инициализация
@@ -81,8 +86,7 @@ int main(int argc, char **argv) {
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
     glutInitWindowPosition(100,100);
     glutInitWindowSize(400,400);
-    glutCreateWindow("Lesson");
-
+    glutCreateWindow("4");
     // регистрация
     glutDisplayFunc(renderScene);
     glutReshapeFunc(changeSize);
@@ -94,6 +98,6 @@ int main(int argc, char **argv) {
 
     // основной цикл
     glutMainLoop();
-
+    cout << "lol";
     return 1;
 }
