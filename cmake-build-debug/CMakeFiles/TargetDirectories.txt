@@ -1,0 +1,3 @@
+/home/x/С++/Test-OpenGL/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/x/С++/Test-OpenGL/cmake-build-debug/CMakeFiles/Test_OpenGL.dir
+/home/x/С++/Test-OpenGL/cmake-build-debug/CMakeFiles/edit_cache.dir
