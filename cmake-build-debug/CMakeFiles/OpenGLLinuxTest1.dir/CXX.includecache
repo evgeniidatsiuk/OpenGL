@@ -7,10 +7,6 @@
 #IncludeRegexTransform: 
 
 /home/x/С++/Test-OpenGL/main.cpp
-stdlib.h
--
 GL/glut.h
--
-iostream
 -
 
