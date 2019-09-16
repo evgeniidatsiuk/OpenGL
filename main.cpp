@@ -5,13 +5,6 @@ void display(void)
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
     // трикутник
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-//    glBegin(GL_TRIANGLES);
-//    glColor3f(1.0,1.0,1.0);
-//    glVertex3f(-0.25,0.0,0.0);
-//    glVertex3f(0.0,0.75,0.0);
-//    glVertex3f(0.25,0.0,0.0);
-//    glEnd();
     glBegin(GL_LINE_LOOP);
     glVertex3f(-0.25,0.0,0.0);
     glVertex3f(0.0,0.75,0.0);
