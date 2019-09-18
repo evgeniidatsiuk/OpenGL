@@ -1,139 +1,108 @@
-#include <GL/glut.h>
+#include<GL/glut.h>
+#include<cstring>
 
-    /* Initialize OpenGL Graphics */
-
-void initGL() {
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
-    glClearDepth(1.0f);                   // Set background depth to farthest
-    glEnable(GL_DEPTH_TEST);   // Enable depth testing for z-culling
-    glDepthFunc(GL_LEQUAL);    // Set the type of depth-test
-    glShadeModel(GL_SMOOTH);   // Enable smooth shading
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);  // Nice perspective corrections
-}
-void display(void)
+void Init_OpenGL()
 {
-
-    //3д фігури, сфера, куб, конус. СОЛІД 5 шт.  Під ними
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear color and depth buffers
-    glMatrixMode(GL_MODELVIEW);     // To operate on model-view matrix
-
-    // Render a color-cube consisting of 6 quads with different colors
-    glLoadIdentity();                 // Reset the model-view matrix
-    glTranslatef(1.5f, 0.0f, -7.0f);  // Move right and into the screen
-
-    glBegin(GL_QUADS);                // Begin drawing the color cube with 6 quads
-    // Top face (y = 1.0f)
-    // Define vertices in counter-clockwise (CCW) order with normal pointing out
-    glColor3f(0.0f, 1.0f, 0.0f);     // Green
-    glVertex3f( 1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f,  1.0f);
-    glVertex3f( 1.0f, 1.0f,  1.0f);
-
-    // Bottom face (y = -1.0f)
-    glColor3f(1.0f, 0.5f, 0.0f);     // Orange
-    glVertex3f( 1.0f, -1.0f,  1.0f);
-    glVertex3f(-1.0f, -1.0f,  1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-    glVertex3f( 1.0f, -1.0f, -1.0f);
-
-    // Front face  (z = 1.0f)
-    glColor3f(1.0f, 0.0f, 0.0f);     // Red
-    glVertex3f( 1.0f,  1.0f, 1.0f);
-    glVertex3f(-1.0f,  1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f( 1.0f, -1.0f, 1.0f);
-
-    // Back face (z = -1.0f)
-    glColor3f(1.0f, 1.0f, 0.0f);     // Yellow
-    glVertex3f( 1.0f, -1.0f, -1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-    glVertex3f(-1.0f,  1.0f, -1.0f);
-    glVertex3f( 1.0f,  1.0f, -1.0f);
-
-    // Left face (x = -1.0f)
-    glColor3f(0.0f, 0.0f, 1.0f);     // Blue
-    glVertex3f(-1.0f,  1.0f,  1.0f);
-    glVertex3f(-1.0f,  1.0f, -1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-    glVertex3f(-1.0f, -1.0f,  1.0f);
-
-    // Right face (x = 1.0f)
-    glColor3f(1.0f, 0.0f, 1.0f);     // Magenta
-    glVertex3f(1.0f,  1.0f, -1.0f);
-    glVertex3f(1.0f,  1.0f,  1.0f);
-    glVertex3f(1.0f, -1.0f,  1.0f);
-    glVertex3f(1.0f, -1.0f, -1.0f);
-    glEnd();  // End of drawing color-cube
-
-    // Render a pyramid consists of 4 triangles
-    glLoadIdentity();                  // Reset the model-view matrix
-    glTranslatef(-1.5f, 0.0f, -6.0f);  // Move left and into the screen
-
-    glBegin(GL_TRIANGLES);           // Begin drawing the pyramid with 4 triangles
-    // Front
-    glColor3f(1.0f, 0.0f, 0.0f);     // Red
-    glVertex3f( 0.0f, 1.0f, 0.0f);
-    glColor3f(0.0f, 1.0f, 0.0f);     // Green
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glColor3f(0.0f, 0.0f, 1.0f);     // Blue
-    glVertex3f(1.0f, -1.0f, 1.0f);
-
-    // Right
-    glColor3f(1.0f, 0.0f, 0.0f);     // Red
-    glVertex3f(0.0f, 1.0f, 0.0f);
-    glColor3f(0.0f, 0.0f, 1.0f);     // Blue
-    glVertex3f(1.0f, -1.0f, 1.0f);
-    glColor3f(0.0f, 1.0f, 0.0f);     // Green
-    glVertex3f(1.0f, -1.0f, -1.0f);
-
-    // Back
-    glColor3f(1.0f, 0.0f, 0.0f);     // Red
-    glVertex3f(0.0f, 1.0f, 0.0f);
-    glColor3f(0.0f, 1.0f, 0.0f);     // Green
-    glVertex3f(1.0f, -1.0f, -1.0f);
-    glColor3f(0.0f, 0.0f, 1.0f);     // Blue
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-
-    // Left
-    glColor3f(1.0f,0.0f,0.0f);       // Red
-    glVertex3f( 0.0f, 1.0f, 0.0f);
-    glColor3f(0.0f,0.0f,1.0f);       // Blue
-    glVertex3f(-1.0f,-1.0f,-1.0f);
-    glColor3f(0.0f,1.0f,0.0f);       // Green
-    glVertex3f(-1.0f,-1.0f, 1.0f);
-    glEnd();   // Done drawing the pyramid
-
-    glutSwapBuffers();  // Swap the front and back frame buffers (double buffering)
+    // set background color to Black
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    // set shade model to Flat
+    glShadeModel(GL_FLAT);
 }
 
-/* Handler for window re-size event. Called back when the window first appears and
-   whenever the window is re-sized with its new width and height */
-void reshape(GLsizei width, GLsizei height) {  // GLsizei for non-negative integer
-    // Compute aspect ratio of the new window
-    if (height == 0) height = 1;                // To prevent divide by 0
-    GLfloat aspect = (GLfloat)width / (GLfloat)height;
-
-    // Set the viewport to cover the new window
-    glViewport(0, 0, width, height);
-
-    // Set the aspect ratio of the clipping volume to match the viewport
-    glMatrixMode(GL_PROJECTION);  // To operate on the Projection matrix
-    glLoadIdentity();             // Reset
-    // Enable perspective projection with fovy, aspect, zNear and zFar
-    gluPerspective(45.0f, aspect, 0.1f, 100.0f);
-}
-
-int main(int argc, char **argv)
+// Display_Objects() function
+void Display_Objects(void)
 {
-    glutInit(&argc, argv);  // Initialize GLUT
-    glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB); // Enable double buffered mode
-    glutInitWindowSize(640, 480);   // Set the window's initial width & height
-    glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
-    glutCreateWindow("EUGENE");          // Create window with the given title
-    glutDisplayFunc(display);       // Register callback handler for window re-paint event
-    glutReshapeFunc(reshape);       // Register callback handler for window re-size event
-    initGL();                       // Our own OpenGL initialization
-    glutMainLoop();                 // Enter the infinite event-processing loop
+    // clearing the window or remove all drawn objects
+    glClear(GL_COLOR_BUFFER_BIT);
+    /*glPushMatrix(), which copies the current matrix and adds
+    the copy to the top of the stack, and
+    glPopMatrix(), which discards the top matrix on the stack*/
+    glPushMatrix();
+    //the glTranslatef() routine in the display list alters the position of the next object to be drawn
+    glTranslatef(0.0, 0.0, 0.0);
+    // set color to object glColor3f(red,green,blue);
+    glColor3f(1.0, 0.8, 0.0);
+    // draw a wire tea pot
+    glutWireTeapot(1.0);
+
+    // draw a wire sphere
+    glTranslatef(-2.5, 0.0, 0.0);
+    glColor3f(0.0, 1.0, 0.0);
+    glutWireSphere(0.8, 30, 30);
+
+    // draw a wire cone
+    glTranslatef(5.0, 0.0, 0.0);
+    glColor3f(0.0, 0.6, 1.0);
+    glutWireCone(0.8, 1.5, 20, 20);
+
+    // draw a wire cube
+    glTranslatef(-1.0, 1.4, 0.0);
+    glColor3f(1.0, 0.3, 0.0);
+    glutWireCube(1.0);
+
+    // draw a wire torus
+    glTranslatef(-3.0, 0.4, 0.0);
+    glColor3f(1.0, 0.3, 1.0);
+    glutWireTorus(0.2, 0.6, 20, 20);
+
+    // draw a text
+    glTranslatef(-2.5, -4.0, 0.0);
+
+    char str[] = {"OpenGL Demo in Visual C++"};
+
+    glColor3f(1.0, 1.0, 1.0);
+    // set position to text
+    glRasterPos2f(2.0, 0.0);
+
+    for (int i = 0; i < strlen(str); i++)
+    {
+        // draw each character
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, str[i]);
+    }
+
+    //you can draw many objects here like polygons,lines,triangles etc
+
+    glPopMatrix();
+    glutSwapBuffers();
+}
+// Reshape() function
+void Reshape(int w, int h)
+{
+    //adjusts the pixel rectangle for drawing to be the entire new window
+    glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+    //matrix specifies the projection transformation
+    glMatrixMode(GL_PROJECTION);
+    // load the identity of matrix by clearing it.
+    glLoadIdentity();
+    gluPerspective(60.0, (GLfloat)w / (GLfloat)h, 1.0, 20.0);
+    //matrix specifies the modelview transformation
+    glMatrixMode(GL_MODELVIEW);
+    // again  load the identity of matrix
+    glLoadIdentity();
+    // gluLookAt() this function is used to specify the eye.
+    // it is used to specify the coordinates to view objects from a specific position
+    gluLookAt(-0.3, 0.5, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+}
+
+// main function
+int main(int argc, char** argv)
+{
+    // initialize glut
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    // set window size
+    glutInitWindowSize(700, 500);
+    // set window location
+    glutInitWindowPosition(250, 50);
+    // create window with window text
+    glutCreateWindow("OpenGL Demo");
+    // call Init_OpenGL() function
+    Init_OpenGL();
+    // call glutDisplayFunc() function & pass parameter as Display_Objects() function
+    glutDisplayFunc(Display_Objects);
+    // call glutReshapeFunc() function & pass parameter as Reshape() function
+    glutReshapeFunc(Reshape);
+    //glutMainLoop() is used to redisplay the objects
+    glutMainLoop();
     return 0;
 }
