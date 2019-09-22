@@ -1,5 +1,4 @@
 #include<GL/glut.h>
-#include<cstring>
 
 void Init_OpenGL()
 {
@@ -20,7 +19,6 @@ void Display_Objects(void)
     glPushMatrix();
     //the glTranslatef() routine in the display list alters the position of the next object to be drawn
 
-
     // draw a wire torus
     glTranslatef(-3.0, 0.4, 0.0);
     glColor3f(1.0, 0.3, 1.0);
@@ -30,7 +28,7 @@ void Display_Objects(void)
     // draw a wire torus
     glTranslatef(-1.0, 0.0, 0.0);
     glColor3f(1.0, 0.3, 1.0);
-    glutWireTorus(0.1, 0.3, 20, 20);
+    glutSolidTorus(0.1, 0.3, 20, 20);
 
     glTranslatef(3.5, 0.0, 0.0);
     // set color to object glColor3f(red,green,blue);
@@ -42,8 +40,7 @@ void Display_Objects(void)
     // set color to object glColor3f(red,green,blue);
     glColor3f(1.0, 0.8, 0.0);
     // draw a wire tea pot
-    glutWireTeapot(0.5);
-
+    glutSolidTeapot(0.5);
 
     // draw a wire cube
     glTranslatef(-2.8, -2.0, 0.0);
@@ -53,9 +50,7 @@ void Display_Objects(void)
     // draw a wire cube
     glTranslatef(2.8, 0.0, 0.0);
     glColor3f(1.0, 0.3, 0.0);
-    glutWireCube(0.5);
-
-
+    glutSolidCube(0.5);
 
     // draw a wire sphere
     glTranslatef(3.0, 2.0, 0.0);
@@ -64,7 +59,7 @@ void Display_Objects(void)
     // draw a wire sphere
     glTranslatef(4.5, 0.0, 0.0);
     glColor3f(0.0, 1.0, 0.0);
-    glutWireSphere(0.4, 30, 30);
+    glutSolidSphere(0.4, 30, 30);
 
     // draw a wire cone
     glTranslatef(-4.5, -2.0, 0.0);
@@ -73,13 +68,7 @@ void Display_Objects(void)
     // draw a wire cone
     glTranslatef(1.5, 0.0, 0.0);
     glColor3f(0.0, 0.0, 1.0);
-    glutWireCone(0.4, 1.5, 20, 20);
-
-
-
-
-
-
+    glutSolidCone(0.4, 1.5, 20, 20);
 
     glPopMatrix();
     glutSwapBuffers();
