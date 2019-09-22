@@ -19,48 +19,67 @@ void Display_Objects(void)
     glPopMatrix(), which discards the top matrix on the stack*/
     glPushMatrix();
     //the glTranslatef() routine in the display list alters the position of the next object to be drawn
-    glTranslatef(0.0, 0.0, 0.0);
-    // set color to object glColor3f(red,green,blue);
-    glColor3f(1.0, 0.8, 0.0);
-    // draw a wire tea pot
-    glutWireTeapot(1.0);
 
-    // draw a wire sphere
-    glTranslatef(-2.5, 0.0, 0.0);
-    glColor3f(0.0, 1.0, 0.0);
-    glutWireSphere(0.8, 30, 30);
-
-    // draw a wire cone
-    glTranslatef(5.0, 0.0, 0.0);
-    glColor3f(0.0, 0.6, 1.0);
-    glutWireCone(0.8, 1.5, 20, 20);
-
-    // draw a wire cube
-    glTranslatef(-1.0, 1.4, 0.0);
-    glColor3f(1.0, 0.3, 0.0);
-    glutWireCube(1.0);
 
     // draw a wire torus
     glTranslatef(-3.0, 0.4, 0.0);
     glColor3f(1.0, 0.3, 1.0);
-    glutWireTorus(0.2, 0.6, 20, 20);
+    glutWireTorus(0.1, 0.3, 20, 20);
 
-    // draw a text
-    glTranslatef(-2.5, -4.0, 0.0);
 
-    char str[] = {"OpenGL Demo in Visual C++"};
+    // draw a wire torus
+    glTranslatef(-1.0, 0.0, 0.0);
+    glColor3f(1.0, 0.3, 1.0);
+    glutWireTorus(0.1, 0.3, 20, 20);
 
-    glColor3f(1.0, 1.0, 1.0);
-    // set position to text
-    glRasterPos2f(2.0, 0.0);
+    glTranslatef(3.5, 0.0, 0.0);
+    // set color to object glColor3f(red,green,blue);
+    glColor3f(1.0, 0.8, 0.0);
+    // draw a wire tea pot
+    glutWireTeapot(0.5);
 
-    for (int i = 0; i < strlen(str); i++)
-    {
-        // draw each character
-        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, str[i]);
-    }
+    glTranslatef(2.8, 0.0, 0.0);
+    // set color to object glColor3f(red,green,blue);
+    glColor3f(1.0, 0.8, 0.0);
+    // draw a wire tea pot
+    glutWireTeapot(0.5);
 
-    //you can draw many objects here like polygons,lines,triangles etc
+
+    // draw a wire cube
+    glTranslatef(-2.8, -2.0, 0.0);
+    glColor3f(1.0, 0.3, 0.0);
+    glutWireCube(0.5);
+
+    // draw a wire cube
+    glTranslatef(2.8, 0.0, 0.0);
+    glColor3f(1.0, 0.3, 0.0);
+    glutWireCube(0.5);
+
+
+
+    // draw a wire sphere
+    glTranslatef(3.0, 2.0, 0.0);
+    glColor3f(0.0, 1.0, 0.0);
+    glutWireSphere(0.4, 30, 30);
+    // draw a wire sphere
+    glTranslatef(4.5, 0.0, 0.0);
+    glColor3f(0.0, 1.0, 0.0);
+    glutWireSphere(0.4, 30, 30);
+
+    // draw a wire cone
+    glTranslatef(-4.5, -2.0, 0.0);
+    glColor3f(0.0, 0.0, 1.0);
+    glutWireCone(0.4, 1.5, 20, 20);
+    // draw a wire cone
+    glTranslatef(1.5, 0.0, 0.0);
+    glColor3f(0.0, 0.0, 1.0);
+    glutWireCone(0.4, 1.5, 20, 20);
+
+
+
+
+
+
 
     glPopMatrix();
     glutSwapBuffers();
@@ -74,14 +93,14 @@ void Reshape(int w, int h)
     glMatrixMode(GL_PROJECTION);
     // load the identity of matrix by clearing it.
     glLoadIdentity();
-    gluPerspective(60.0, (GLfloat)w / (GLfloat)h, 1.0, 20.0);
+    gluPerspective(90.0, (GLfloat)w / (GLfloat)h, 1.0, 20.0);
     //matrix specifies the modelview transformation
     glMatrixMode(GL_MODELVIEW);
     // again  load the identity of matrix
     glLoadIdentity();
     // gluLookAt() this function is used to specify the eye.
     // it is used to specify the coordinates to view objects from a specific position
-    gluLookAt(-0.3, 0.5, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+    gluLookAt(-0.8, 0.5, 8.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 }
 
 // main function
@@ -95,7 +114,7 @@ int main(int argc, char** argv)
     // set window location
     glutInitWindowPosition(250, 50);
     // create window with window text
-    glutCreateWindow("OpenGL Demo");
+    glutCreateWindow("EUGENE");
     // call Init_OpenGL() function
     Init_OpenGL();
     // call glutDisplayFunc() function & pass parameter as Display_Objects() function
