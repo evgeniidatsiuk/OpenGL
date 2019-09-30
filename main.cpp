@@ -1,11 +1,17 @@
 #include<GL/glut.h>
 
+float spin =  0.0;
+
 void Init_OpenGL()
 {
     // set background color to Black
     glClearColor(0.0, 0.0, 0.0, 0.0);
-    // set shade model to Flat
-   // glShadeModel(GL_FLAT);
+
+}
+void idle()
+{
+    spin += 0.3;
+    glutPostRedisplay();
 }
 // Display_Objects() function
 void Display_Objects(void)
@@ -18,6 +24,7 @@ void Display_Objects(void)
     glPushMatrix();
     //the glTranslatef() routine in the display list alters the position of the next object to be drawn
     glTranslatef(0.0, 0.0, 0.0);
+    glRotatef( spin, 0.0, 1.0, 0.0 );
     glColor3f(1.0, 0.3, 1.0);
     glutWireOctahedron();
 
@@ -26,6 +33,7 @@ void Display_Objects(void)
     glPushMatrix();
     // draw a wire torus
     glTranslatef(-2.4, 1.6, 0.0);
+    glRotatef( spin, 1.0, 0.0, 0.0 );
     glColor3f(0.0, 0.3, 1.0);
     glutWireTorus(0.1, 0.3, 20, 20);
     glPopMatrix();
@@ -33,6 +41,7 @@ void Display_Objects(void)
     glPushMatrix();
     // draw a wire torus
     glTranslatef(-1.4, 1.6, 0.0);
+    glRotatef( spin, 0.0, 0.0, 1.0 );
     glColor3f(0.0, 0.3, 1.0);
     glutSolidTorus(0.1, 0.3, 20, 20);
     glPopMatrix();
@@ -40,6 +49,7 @@ void Display_Objects(void)
     glPushMatrix();
     // draw a wire teapot
     glTranslatef(1.0, 1.6, 0.0);
+    glRotatef( spin, 0.0, 2.5, 0.0 );
     glColor3f(1.0, 0.3, 0.0);
     glutWireTeapot(0.5);
     glPopMatrix();
@@ -47,6 +57,7 @@ void Display_Objects(void)
     glPushMatrix();
     // draw a solid teapot
     glTranslatef(2.8, 1.6, 0.0);
+    glRotatef( spin, 0.0, -2.0, 1.0 );
     glColor3f(1.0, 0.3, 0.0);
     glutSolidTeapot(0.5);
     glPopMatrix();
@@ -54,6 +65,7 @@ void Display_Objects(void)
     glPushMatrix();
     // draw a wire teapot
     glTranslatef(-2.4, 0.0, 0.0);
+    glRotatef( spin, 1.0, 1.0, 0.0 );
     glColor3f(0.0, 1.0, 1.0);
     glutWireCube(0.5);
     glPopMatrix();
@@ -61,6 +73,7 @@ void Display_Objects(void)
     glPushMatrix();
     // draw a solid teapot
     glTranslatef(-1.4, 0.0, 0.0);
+    glRotatef( spin+0.1, 0.0, 3.0, 2.0 );
     glColor3f(0.0, 3.0, 1.0);
     glutSolidCube(0.5);
     glPopMatrix();
@@ -68,6 +81,7 @@ void Display_Objects(void)
     glPushMatrix();
     // draw a wire teapot
     glTranslatef(2.6, 0.0, 0.0);
+    glRotatef( spin+0.3, 2.0, 0.0, 2.0 );
     glColor3f(1.0, 1.0, 1.0);
     glutWireSphere(0.4, 30, 30);
     glPopMatrix();
@@ -75,6 +89,7 @@ void Display_Objects(void)
     glPushMatrix();
     // draw a solid teapot
     glTranslatef(1.6, 0.0, 0.0);
+    glRotatef( spin, 0.0, 1.5, 0.5 );
     glColor3f(1.0, 1.0, 1.0);
     glutSolidSphere(0.4, 30, 30);
     glPopMatrix();
@@ -82,6 +97,7 @@ void Display_Objects(void)
     glPushMatrix();
     // draw a wire teapot
     glTranslatef(1.4, -1.0, 0.0);
+    glRotatef( spin, 2.0, 1.0, 0.0 );
     glColor3f(0.0, 0.3, 0.0);
     glutWireCone(0.4, 1.5, 20, 20);
     glPopMatrix();
@@ -89,6 +105,7 @@ void Display_Objects(void)
     glPushMatrix();
     // draw a solid teapot
     glTranslatef(-1.4, -1.0, 0.0);
+    glRotatef( spin, -2.0, -1.0, 0.0 );
     glColor3f(0.0, 0.3, 0.0);
     glutSolidCone(0.4, 1.5, 20, 20);
     glPopMatrix();
@@ -130,6 +147,7 @@ int main(int argc, char** argv)
     glutDisplayFunc(Display_Objects);
     // call glutReshapeFunc() function & pass parameter as Reshape() function
     glutReshapeFunc(Reshape);
+    glutIdleFunc(idle);
     //glutMainLoop() is used to redisplay the objects
     glutMainLoop();
     return 0;
