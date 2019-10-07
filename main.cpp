@@ -30,63 +30,63 @@ void display(void)
     glPushMatrix();
     glTranslatef(0.0,0.0,0.0);
     glColor3f(1.0,0.8,0.0);
-    glutSolidSphere(digit*1,10,10);
+    glutWireSphere(digit*1,10,10);
     glPopMatrix();
     //меркурій
     glPushMatrix();
     glRotatef(spin1,0.0,1.0,0.0);
     glTranslatef(r*0.01289,0.0,0.0);
     glColor3f(1.0,0.5,0.0);
-    glutSolidSphere(digit*0.03427,10,10);
+    glutWireSphere(digit*0.03427,10,10);
     glPopMatrix();
     //венера
     glPushMatrix();
     glRotatef(spin2,0.0,1.0,0.0);
     glTranslatef(r*0.024,0.0,0.0);
     glColor3f(0.8,0.8,0.0);
-    glutSolidSphere(digit*0.08462,10,10);
+    glutWireSphere(digit*0.08462,10,10);
     glPopMatrix();
     //земля
     glPushMatrix();
     glRotatef(spin3,0.0,1.0,0.0);
     glTranslatef(r*0.033,0.0,0.0);
     glColor3f(0.0,0.0,1.0);
-    glutSolidSphere(digit*0.08951,10,10);
+    glutWireSphere(digit*0.08951,10,10);
     glPopMatrix();
     //марс
     glPushMatrix();
     glRotatef(spin4,0.0,1.0,0.0);
     glTranslatef(r*0.05,0.0,0.0);
     glColor3f(1.0,0.0,0.0);
-    glutSolidSphere(digit*0.04755,10,10);
+    glutWireSphere(digit*0.04755,10,10);
     glPopMatrix();
     //Юпітер
     glPushMatrix();
     glRotatef(spin5,0.0,1.0,0.0);
     glTranslatef(r*0.17,0.0,0.0);
     glColor3f(1.0,0.5,1.0);
-    glutSolidSphere(digit*1,10,10);
+    glutWireSphere(digit*1,10,10);
     glPopMatrix();
     //Сатурн
     glPushMatrix();
     glRotatef(spin6,0.0,1.0,0.0);
     glTranslatef(r*0.31,0.0,0.0);
     glColor3f(1.0,0.5,0.0);
-    glutSolidSphere(digit*0.8392,10,10);
+    glutWireSphere(digit*0.8392,10,10);
     glPopMatrix();
     //Уран
     glPushMatrix();
     glRotatef(spin7,0.0,1.0,0.0);
     glTranslatef(r*0.64,0.0,0.0);
     glColor3f(0.0,0.0,0.5);
-    glutSolidSphere(digit*0.3566,10,10);
+    glutWireSphere(digit*0.3566,10,10);
     glPopMatrix();
     //Нептун
     glPushMatrix();
     glRotatef(spin8,0.0,1.0,0.0);
     glTranslatef(r*1,0.0,0.0);
     glColor3f(0.0,0.0,0.8);
-    glutSolidSphere(digit*0.3357,10,10);
+    glutWireSphere(digit*0.3357,10,10);
     glPopMatrix();
 
     glPopMatrix();
@@ -129,7 +129,6 @@ void moving(void)
         spin8=0;
     }
 
-
     glutPostRedisplay();
 }
 
@@ -152,8 +151,8 @@ void keyboard(unsigned char key, int x,int y)
 void arrow_keys (int keys,int x,int y)
 {
     switch(keys){
-        case GLUT_KEY_UP: glutFullScreen(); break;
-        case GLUT_KEY_DOWN :glutReshapeWindow(800,600); break;
+        case GLUT_KEY_UP:   glutFullScreen(); break;
+        case GLUT_KEY_DOWN: glutReshapeWindow(800,600); break;
     }
 }
 
