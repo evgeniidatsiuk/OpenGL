@@ -1,154 +1,181 @@
-#include<GL/glut.h>
+#include <iostream>
+#include <stdio.h>
+#include <string.h>
+#include <GL/glut.h>
 
-float spin =  0.0;
 
-void Init_OpenGL()
+void resize(int w,int h)
 {
-    // set background color to Black
-    glClearColor(0.0, 0.0, 0.0, 0.0);
-
+    if (h == 0) h = 1;
+    float ratio=w*1.0/h;
+    glViewport(0,0,w,h);
+    glMatrixMode( GL_PROJECTION );
+    glLoadIdentity();
+    gluPerspective(45.0, ratio, 0.1,100);
+    gluLookAt( 10,10,10, 0,0,0, 0,1,0 );
+    glMatrixMode( GL_MODELVIEW );
 }
-void idle()
+float digit = 1;
+int r = 100;
+float cx=0.0, cy=0.0, tap = 0.1;
+float spin1=0,spin2=45,spin3=90,spin4=135,spin5=180,spin6=225,spin7=270,spin8=315;
+
+void display(void)
 {
-    spin += 0.3;
-    glutPostRedisplay();
-}
-// Display_Objects() function
-void Display_Objects(void)
-{
-    // clearing the window or remove all drawn objects
-    glClear(GL_COLOR_BUFFER_BIT);
-    /*glPushMatrix(), which copies the current matrix and adds
-    the copy to the top of the stack, and
-    glPopMatrix(), which discards the top matrix on the stack*/
+    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
     glPushMatrix();
-    //the glTranslatef() routine in the display list alters the position of the next object to be drawn
-    glTranslatef(0.0, 0.0, 0.0);
-    glRotatef( spin, 0.0, 1.0, 0.0 );
-    glColor3f(1.0, 0.3, 1.0);
-    glutWireOctahedron();
+    glTranslatef(cx,0.0,cy);
+    //сонце
+    glPushMatrix();
+    glTranslatef(0.0,0.0,0.0);
+    glColor3f(1.0,0.8,0.0);
+    glutSolidSphere(digit*1,10,10);
+    glPopMatrix();
+    //меркурій
+    glPushMatrix();
+    glRotatef(spin1,0.0,1.0,0.0);
+    glTranslatef(r*0.01289,0.0,0.0);
+    glColor3f(1.0,0.5,0.0);
+    glutSolidSphere(digit*0.03427,10,10);
+    glPopMatrix();
+    //венера
+    glPushMatrix();
+    glRotatef(spin2,0.0,1.0,0.0);
+    glTranslatef(r*0.024,0.0,0.0);
+    glColor3f(0.8,0.8,0.0);
+    glutSolidSphere(digit*0.08462,10,10);
+    glPopMatrix();
+    //земля
+    glPushMatrix();
+    glRotatef(spin3,0.0,1.0,0.0);
+    glTranslatef(r*0.033,0.0,0.0);
+    glColor3f(0.0,0.0,1.0);
+    glutSolidSphere(digit*0.08951,10,10);
+    glPopMatrix();
+    //марс
+    glPushMatrix();
+    glRotatef(spin4,0.0,1.0,0.0);
+    glTranslatef(r*0.05,0.0,0.0);
+    glColor3f(1.0,0.0,0.0);
+    glutSolidSphere(digit*0.04755,10,10);
+    glPopMatrix();
+    //Юпітер
+    glPushMatrix();
+    glRotatef(spin5,0.0,1.0,0.0);
+    glTranslatef(r*0.17,0.0,0.0);
+    glColor3f(1.0,0.5,1.0);
+    glutSolidSphere(digit*1,10,10);
+    glPopMatrix();
+    //Сатурн
+    glPushMatrix();
+    glRotatef(spin6,0.0,1.0,0.0);
+    glTranslatef(r*0.31,0.0,0.0);
+    glColor3f(1.0,0.5,0.0);
+    glutSolidSphere(digit*0.8392,10,10);
+    glPopMatrix();
+    //Уран
+    glPushMatrix();
+    glRotatef(spin7,0.0,1.0,0.0);
+    glTranslatef(r*0.64,0.0,0.0);
+    glColor3f(0.0,0.0,0.5);
+    glutSolidSphere(digit*0.3566,10,10);
+    glPopMatrix();
+    //Нептун
+    glPushMatrix();
+    glRotatef(spin8,0.0,1.0,0.0);
+    glTranslatef(r*1,0.0,0.0);
+    glColor3f(0.0,0.0,0.8);
+    glutSolidSphere(digit*0.3357,10,10);
+    glPopMatrix();
 
     glPopMatrix();
 
-    glPushMatrix();
-    // draw a wire torus
-    glTranslatef(-2.4, 1.6, 0.0);
-    glRotatef( spin, 1.0, 0.0, 0.0 );
-    glColor3f(0.0, 0.3, 1.0);
-    glutWireTorus(0.1, 0.3, 20, 20);
-    glPopMatrix();
-
-    glPushMatrix();
-    // draw a wire torus
-    glTranslatef(-1.4, 1.6, 0.0);
-    glRotatef( spin, 0.0, 0.0, 1.0 );
-    glColor3f(0.0, 0.3, 1.0);
-    glutSolidTorus(0.1, 0.3, 20, 20);
-    glPopMatrix();
-
-    glPushMatrix();
-    // draw a wire teapot
-    glTranslatef(1.0, 1.6, 0.0);
-    glRotatef( spin, 0.0, 2.5, 0.0 );
-    glColor3f(1.0, 0.3, 0.0);
-    glutWireTeapot(0.5);
-    glPopMatrix();
-
-    glPushMatrix();
-    // draw a solid teapot
-    glTranslatef(2.8, 1.6, 0.0);
-    glRotatef( spin, 0.0, -2.0, 1.0 );
-    glColor3f(1.0, 0.3, 0.0);
-    glutSolidTeapot(0.5);
-    glPopMatrix();
-
-    glPushMatrix();
-    // draw a wire teapot
-    glTranslatef(-2.4, 0.0, 0.0);
-    glRotatef( spin, 1.0, 1.0, 0.0 );
-    glColor3f(0.0, 1.0, 1.0);
-    glutWireCube(0.5);
-    glPopMatrix();
-
-    glPushMatrix();
-    // draw a solid teapot
-    glTranslatef(-1.4, 0.0, 0.0);
-    glRotatef( spin+0.1, 0.0, 3.0, 2.0 );
-    glColor3f(0.0, 3.0, 1.0);
-    glutSolidCube(0.5);
-    glPopMatrix();
-
-    glPushMatrix();
-    // draw a wire teapot
-    glTranslatef(2.6, 0.0, 0.0);
-    glRotatef( spin+0.3, 2.0, 0.0, 2.0 );
-    glColor3f(1.0, 1.0, 1.0);
-    glutWireSphere(0.4, 30, 30);
-    glPopMatrix();
-
-    glPushMatrix();
-    // draw a solid teapot
-    glTranslatef(1.6, 0.0, 0.0);
-    glRotatef( spin, 0.0, 1.5, 0.5 );
-    glColor3f(1.0, 1.0, 1.0);
-    glutSolidSphere(0.4, 30, 30);
-    glPopMatrix();
-
-    glPushMatrix();
-    // draw a wire teapot
-    glTranslatef(1.4, -1.0, 0.0);
-    glRotatef( spin, 2.0, 1.0, 0.0 );
-    glColor3f(0.0, 0.3, 0.0);
-    glutWireCone(0.4, 1.5, 20, 20);
-    glPopMatrix();
-
-    glPushMatrix();
-    // draw a solid teapot
-    glTranslatef(-1.4, -1.0, 0.0);
-    glRotatef( spin, -2.0, -1.0, 0.0 );
-    glColor3f(0.0, 0.3, 0.0);
-    glutSolidCone(0.4, 1.5, 20, 20);
-    glPopMatrix();
     glutSwapBuffers();
 }
-// Reshape() function
-void Reshape(int w, int h)
+
+void moving(void)
 {
-    //adjusts the pixel rectangle for drawing to be the entire new window
-    glViewport(0, 0, (GLsizei)w, (GLsizei)h);
-    //matrix specifies the projection transformation
-    glMatrixMode(GL_PROJECTION);
-    // load the identity of matrix by clearing it.
-    glLoadIdentity();
-    gluPerspective(90.0, (GLfloat)w / (GLfloat)h, 1.0, 20.0);
-    //matrix specifies the modelview transformation
-    glMatrixMode(GL_MODELVIEW);
-    // again  load the identity of matrix
-    glLoadIdentity();
-    // gluLookAt() this function is used to specify the eye.
-    // it is used to specify the coordinates to view objects from a specific position
-    gluLookAt(0, 0, 4, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+    spin1+=(360.0/88);
+    if(spin1>=360){
+        spin1=0;
+    }
+    spin2+=(360.0/225);
+    if(spin2>=360){
+        spin2=0;
+    }
+    spin3+=(360.0/365);
+    if(spin3>=360){
+        spin3=0;
+    }
+    spin4+=(360.0/686);
+    if(spin4>=360){
+        spin4=0;
+    }
+    spin5+=(360.0/4329);
+    if(spin5>=360){
+        spin5=0;
+    }
+    spin6+=(360.0/10753);
+    if(spin6>=360){
+        spin6=0;
+    }
+    spin7+=(360.0/30667);
+    if(spin7>=360){
+        spin7=0;
+    }
+    spin8+=(360.0/60145);
+    if(spin8>=360){
+        spin8=0;
+    }
+
+
+    glutPostRedisplay();
 }
-// main function
-int main(int argc, char** argv)
+
+void mouse(int button,int state,int x,int y)
 {
-    // initialize glut
+    if(button==GLUT_RIGHT_BUTTON && state==GLUT_DOWN){glutIdleFunc(NULL);}
+    if(button==GLUT_LEFT_BUTTON && state==GLUT_DOWN){glutIdleFunc(moving);}
+}
+
+void keyboard(unsigned char key, int x,int y)
+{
+    switch(key){
+        case 'a': cx=cx-tap; break;
+        case 'd': cx=cx+tap; break;
+        case 'w': cy=cy+tap; break;
+        case 's': cy=cy-tap; break;
+    }
+}
+
+void arrow_keys (int keys,int x,int y)
+{
+    switch(keys){
+        case GLUT_KEY_UP: glutFullScreen(); break;
+        case GLUT_KEY_DOWN :glutReshapeWindow(800,600); break;
+    }
+}
+
+int main(int argc, char **argv) {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    // set window size
-    glutInitWindowSize(800, 600);
-    // set window location
-    glutInitWindowPosition(250, 50);
-    // create window with window text
-    glutCreateWindow("EUGENE");
-    // call Init_OpenGL() function
-    Init_OpenGL();
-    // call glutDisplayFunc() function & pass parameter as Display_Objects() function
-    glutDisplayFunc(Display_Objects);
-    // call glutReshapeFunc() function & pass parameter as Reshape() function
-    glutReshapeFunc(Reshape);
-    glutIdleFunc(idle);
-    //glutMainLoop() is used to redisplay the objects
+    glutInitWindowPosition(50, 50);
+    glutInitWindowSize(640, 480);
+    glutInitDisplayMode( GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE );
+    glutCreateWindow("SOLLAR SYSTEM");
+    glutIdleFunc(display);
+    glutDisplayFunc(display);
+    glutReshapeFunc(resize);
+    glutMouseFunc(mouse);
+    glutKeyboardFunc(keyboard);
+    glutSpecialFunc(arrow_keys);
+
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_COLOR_MATERIAL);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+
+    glutIdleFunc(moving);
+
     glutMainLoop();
-    return 0;
 }
