@@ -1,8 +1,7 @@
-#include <iostream>
-#include <stdio.h>
 #include <string.h>
 #include <GL/glut.h>
 
+GLfloat position[] = { 1.0,1.0,1.5, 1.0};
 
 void resize(int w,int h)
 {
@@ -12,11 +11,12 @@ void resize(int w,int h)
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
     gluPerspective(45.0, ratio, 0.1,100);
-    gluLookAt( 10,10,10, 0,0,0, 0,1,0 );
+    gluLookAt( 15,15,15, 0,0,0, 0,1,0 );
     glMatrixMode( GL_MODELVIEW );
 }
 float digit = 1;
 int r = 100;
+int loop = 1;
 float cx=0.0, cy=0.0, tap = 0.1;
 float spin1=0,spin2=45,spin3=90,spin4=135,spin5=180,spin6=225,spin7=270,spin8=315;
 
@@ -24,69 +24,100 @@ void display(void)
 {
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
-    glPushMatrix();
-    glTranslatef(cx,0.0,cy);
     //сонце
+
     glPushMatrix();
-    glTranslatef(0.0,0.0,0.0);
+    glPushMatrix();
+    glLightfv(GL_LIGHT0, GL_POSITION, position);
+    glTranslatef(cx,0.0,cy);
+    glDisable(GL_LIGHTING);
     glColor3f(1.0,0.8,0.0);
-    glutWireSphere(digit*1,10,10);
+    glutSolidSphere(digit*1*loop,10,10);
+    glEnable(GL_LIGHTING);
     glPopMatrix();
+
     //меркурій
+
     glPushMatrix();
     glRotatef(spin1,0.0,1.0,0.0);
-    glTranslatef(r*0.01289,0.0,0.0);
+    glTranslatef(r*0.013,0.0,0.0);
     glColor3f(1.0,0.5,0.0);
-    glutWireSphere(digit*0.03427,10,10);
+    glutSolidSphere(digit*0.03427*loop,10,10);
     glPopMatrix();
+
     //венера
+
     glPushMatrix();
     glRotatef(spin2,0.0,1.0,0.0);
     glTranslatef(r*0.024,0.0,0.0);
     glColor3f(0.8,0.8,0.0);
-    glutWireSphere(digit*0.08462,10,10);
+    glutSolidSphere(digit*0.08462*loop,10,10);
     glPopMatrix();
+
     //земля
+
     glPushMatrix();
+
     glRotatef(spin3,0.0,1.0,0.0);
     glTranslatef(r*0.033,0.0,0.0);
-    glColor3f(0.0,0.0,1.0);
-    glutWireSphere(digit*0.08951,10,10);
+    glColor3f(0.0,1.0,0.0);
+    glutSolidSphere(digit*0.08951*loop,10,10);
+
+    // місяць
+
+    glPushMatrix();
+    glRotatef(spin2,0.0,0.0,0.0);
+    glTranslatef(-r*0.002,0.0,0.0);
+  //  glTranslatef(-r*0.002,0.0,0.0);
+    glColor3f(1.0,1.0,1.0);
+    glutSolidSphere(digit*0.05,10,10);
     glPopMatrix();
+
+    glPopMatrix();
+
     //марс
+
     glPushMatrix();
     glRotatef(spin4,0.0,1.0,0.0);
     glTranslatef(r*0.05,0.0,0.0);
     glColor3f(1.0,0.0,0.0);
-    glutWireSphere(digit*0.04755,10,10);
+    glutSolidSphere(digit*0.04755*loop,10,10);
     glPopMatrix();
+
     //Юпітер
+
     glPushMatrix();
     glRotatef(spin5,0.0,1.0,0.0);
-    glTranslatef(r*0.17,0.0,0.0);
+    glTranslatef(r*0.1,0.0,0.0);
     glColor3f(1.0,0.5,1.0);
-    glutWireSphere(digit*1,10,10);
+    glutSolidSphere(digit*1*loop,10,10);
     glPopMatrix();
+
     //Сатурн
+
     glPushMatrix();
     glRotatef(spin6,0.0,1.0,0.0);
-    glTranslatef(r*0.31,0.0,0.0);
+    glTranslatef(r*0.12,0.0,0.0);
     glColor3f(1.0,0.5,0.0);
-    glutWireSphere(digit*0.8392,10,10);
+    glutSolidSphere(digit*0.8392*loop,10,10);
     glPopMatrix();
+
     //Уран
+
     glPushMatrix();
     glRotatef(spin7,0.0,1.0,0.0);
-    glTranslatef(r*0.64,0.0,0.0);
+    glTranslatef(r*0.14,0.0,0.0);
     glColor3f(0.0,0.0,0.5);
-    glutWireSphere(digit*0.3566,10,10);
+    glutSolidSphere(digit*0.3566*loop,10,10);
     glPopMatrix();
+
     //Нептун
+
     glPushMatrix();
     glRotatef(spin8,0.0,1.0,0.0);
-    glTranslatef(r*1,0.0,0.0);
+    glTranslatef(r*0.12,0.0,0.0);
     glColor3f(0.0,0.0,0.8);
-    glutWireSphere(digit*0.3357,10,10);
+    glutSolidSphere(digit*0.3357*loop,10,10);
     glPopMatrix();
 
     glPopMatrix();
@@ -145,6 +176,8 @@ void keyboard(unsigned char key, int x,int y)
         case 'd': cx=cx+tap; break;
         case 'w': cy=cy+tap; break;
         case 's': cy=cy-tap; break;
+        case '2': loop=loop+1;break;
+        case '8': loop=loop-1;break;
     }
 }
 
