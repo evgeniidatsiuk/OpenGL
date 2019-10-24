@@ -1,9 +1,15 @@
 #include <string.h>
 #include <GL/glut.h>
 
-GLfloat position[] = { 1.0,1.0,1.5, 1.0};
+GLfloat position[] = { 0.0,0.0,0.0, 1.0 };
 
-void resize(int w,int h)
+float digit = 1;
+int r = 100;
+int loop = 1;
+float cx=0.0, cy=0.0, tap = 0.1;
+float spin1=0,spin2=45,spin3=90,spin4=135,spin5=180,spin6=225,spin7=270,spin8=315;
+
+void resize(int w, int h)
 {
     if (h == 0) h = 1;
     float ratio=w*1.0/h;
@@ -14,11 +20,6 @@ void resize(int w,int h)
     gluLookAt( 15,15,15, 0,0,0, 0,1,0 );
     glMatrixMode( GL_MODELVIEW );
 }
-float digit = 1;
-int r = 100;
-int loop = 1;
-float cx=0.0, cy=0.0, tap = 0.1;
-float spin1=0,spin2=45,spin3=90,spin4=135,spin5=180,spin6=225,spin7=270,spin8=315;
 
 void display(void)
 {
@@ -28,11 +29,14 @@ void display(void)
 
     glPushMatrix();
     glPushMatrix();
+    // Для управления свойствами источника света используются команды glLight
+    // Параметр light указывает OpenGL для какого источника света задаются параметры.
+    // GL_POSITION позиция источника света (по умолчанию источник света направленный)
     glLightfv(GL_LIGHT0, GL_POSITION, position);
-    glTranslatef(cx,0.0,cy);
     glDisable(GL_LIGHTING);
+    glTranslatef(cx,0.0,cy);
     glColor3f(1.0,0.8,0.0);
-    glutSolidSphere(digit*1*loop,10,10);
+    glutSolidSphere(digit*1*loop,30,30);
     glEnable(GL_LIGHTING);
     glPopMatrix();
 
@@ -174,8 +178,8 @@ void keyboard(unsigned char key, int x,int y)
     switch(key){
         case 'a': cx=cx-tap; break;
         case 'd': cx=cx+tap; break;
-        case 'w': cy=cy+tap; break;
-        case 's': cy=cy-tap; break;
+        case 'w': cy=cy-tap; break;
+        case 's': cy=cy+tap; break;
         case '2': loop=loop+1;break;
         case '8': loop=loop-1;break;
     }
@@ -190,11 +194,16 @@ void arrow_keys (int keys,int x,int y)
 }
 
 int main(int argc, char **argv) {
+
     glutInit(&argc, argv);
     glutInitWindowPosition(50, 50);
     glutInitWindowSize(640, 480);
     glutInitDisplayMode( GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE );
     glutCreateWindow("SOLLAR SYSTEM");
+    glEnable(GL_LIGHT0);
+
+    // змушує колір матеріалу відстежувати поточний колір
+    glEnable(GL_COLOR_MATERIAL);
     glutIdleFunc(display);
     glutDisplayFunc(display);
     glutReshapeFunc(resize);
@@ -202,10 +211,7 @@ int main(int argc, char **argv) {
     glutKeyboardFunc(keyboard);
     glutSpecialFunc(arrow_keys);
 
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_COLOR_MATERIAL);
-    glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);
+    //glEnable(GL_DEPTH_TEST);
 
     glutIdleFunc(moving);
 
