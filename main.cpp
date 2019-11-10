@@ -16,7 +16,7 @@
         glMatrixMode( GL_PROJECTION );
         glLoadIdentity();
         gluPerspective(45.0, ratio, 0.1,100);
-        gluLookAt( 10,10,10, 0,0,0, 0,1,0 );
+        gluLookAt( 15,15,15, 0,0,0, 0,1,0 );
         glMatrixMode( GL_MODELVIEW );
     }
     float digit = 1;
@@ -32,7 +32,7 @@
 
     GLuint solarTex, planetsTex[8];
 
-    const char planetTex[] = "/home/x/С++/Test-OpenGL/plan.jpg";
+    const char planetTex[] = "/home/x/С++/Test-OpenGL/plan1.jpg";
     const char planetTex1[] = "/home/x/С++/Test-OpenGL/plan1.jpg";
     const char planetTex2[] = "/home/x/С++/Test-OpenGL/plan2.jpg";
     const char planetTex3[] = "/home/x/С++/Test-OpenGL/plan3.jpg";
@@ -120,12 +120,12 @@
         glLightfv(GL_LIGHT0,GL_POSITION,light_position);
         glLightfv(GL_LIGHT0,GL_DIFFUSE,white_light);
         glLightfv(GL_LIGHT0,GL_SPECULAR,white_light);
-        /*
+
         glEnable(GL_LIGHTING);
         glEnable(GL_LIGHT0);
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_AUTO_NORMAL);
-        */
+
     }
 
 
@@ -157,7 +157,7 @@
         glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
         glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
         glRotatef(spin1,0.0,1.0,0.0);
-        glTranslatef(r*0.01289,0.0,0.0);
+        glTranslatef(r*0.013,0.0,0.0);
         glBindTexture(GL_TEXTURE_2D,planetsTex[0]);
         glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_MODULATE);
         glutSolidSphere(digit*0.03427,10,10);
@@ -213,7 +213,7 @@
         glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
         glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
         glRotatef(spin5,0.0,1.0,0.0);
-        glTranslatef(r*0.17,0.0,0.0);
+        glTranslatef(r*0.1,0.0,0.0);
         glBindTexture(GL_TEXTURE_2D,planetsTex[4]);
         glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_MODULATE);
         glutSolidSphere(digit*1,10,10);
@@ -227,7 +227,7 @@
         glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
         glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
         glRotatef(spin6,0.0,1.0,0.0);
-        glTranslatef(r*0.31,0.0,0.0);
+        glTranslatef(r*0.12,0.0,0.0);
         glBindTexture(GL_TEXTURE_2D,planetsTex[5]);
         glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_MODULATE);
         glutSolidSphere(digit*0.8392,10,10);
@@ -241,7 +241,7 @@
         glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
         glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
         glRotatef(spin7,0.0,1.0,0.0);
-        glTranslatef(r*0.64,0.0,0.0);
+        glTranslatef(r*0.14,0.0,0.0);
         glBindTexture(GL_TEXTURE_2D,planetsTex[6]);
         glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_MODULATE);
         glutSolidSphere(digit*0.3566,10,10);
@@ -255,7 +255,7 @@
         glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
         glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
         glRotatef(spin8,0.0,1.0,0.0);
-        glTranslatef(r*1,0.0,0.0);
+        glTranslatef(r*0.12,0.0,0.0);
         glBindTexture(GL_TEXTURE_2D,planetsTex[7]);
         glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_MODULATE);
         glutSolidSphere(digit*0.3357,10,10);
