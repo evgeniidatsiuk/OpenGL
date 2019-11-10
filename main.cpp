@@ -32,7 +32,7 @@
 
     GLuint solarTex, planetsTex[8];
 
-    const char planetTex[] = "/home/x/С++/Test-OpenGL/plan1.jpg";
+    const char planetTex[] = "/home/x/С++/Test-OpenGL/plan.jpg";
     const char planetTex1[] = "/home/x/С++/Test-OpenGL/plan1.jpg";
     const char planetTex2[] = "/home/x/С++/Test-OpenGL/plan2.jpg";
     const char planetTex3[] = "/home/x/С++/Test-OpenGL/plan3.jpg";
@@ -40,7 +40,7 @@
     const char planetTex5[] = "/home/x/С++/Test-OpenGL/plan5.jpg";
     const char planetTex6[] = "/home/x/С++/Test-OpenGL/plan6.jpg";
     const char planetTex7[] = "/home/x/С++/Test-OpenGL/plan7.jpg";
-    const char solar[]="/home/x/С++/Test-OpenGL/solar.png";
+    const char solar[]      = "/home/x/С++/Test-OpenGL/plan1.jpg";
 
     void LoadImage(const char *sTextureName)
     {
