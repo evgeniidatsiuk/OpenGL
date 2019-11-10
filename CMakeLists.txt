@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14) # common to every CLion project
 project(OpenGLLinuxTest) # project name
 
 ##
-set(OpenGlLinkers -lglut -lGLU -lGL) # setting all the Glut libraries as one variable.
+set(OpenGlLinkers -lglut -lGLU -lGL -lIL -lILU -lILUT) # setting all the Glut libraries as one variable.
 
 
 ################################################

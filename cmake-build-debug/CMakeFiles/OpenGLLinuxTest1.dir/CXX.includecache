@@ -7,8 +7,18 @@
 #IncludeRegexTransform: 
 
 /home/x/С++/Test-OpenGL/main.cpp
+iostream
+-
+stdio.h
+-
 string.h
 -
 GL/glut.h
+-
+IL/il.h
+-
+IL/ilut.h
+-
+IL/ilu.h
 -
 
