@@ -8,6 +8,7 @@
     #include <IL/ilut.h>
     #include <IL/ilu.h>
 
+
     void resize(int w,int h)
     {
         if (h == 0) h = 1;
@@ -23,8 +24,7 @@
     int r = 100;
     float cx=0.0, cy=0.0, tap = 0.1;
     float spin1=0,spin2=45,spin3=90,spin4=135,spin5=180,spin6=225,spin7=270,spin8=315;
-
-
+    GLfloat position[] = { 0.0,0.0,0.0, 1.0 };
 
     GLubyte *g_pImage;
     int g_width, g_height;
@@ -32,7 +32,7 @@
 
     GLuint solarTex, planetsTex[8];
 
-    const char planetTex[] = "/home/x/С++/Test-OpenGL/plan.jpg";
+    const char planetTex[]  = "/home/x/С++/Test-OpenGL/plan.jpg";
     const char planetTex1[] = "/home/x/С++/Test-OpenGL/plan1.jpg";
     const char planetTex2[] = "/home/x/С++/Test-OpenGL/plan2.jpg";
     const char planetTex3[] = "/home/x/С++/Test-OpenGL/plan3.jpg";
@@ -65,7 +65,7 @@
         memcpy(g_pImage, ilGetData(), size);
     }
 
-    int DevILInit()
+    int devIlInit()
     {
         if ( ilGetInteger ( IL_VERSION_NUM ) < IL_VERSION )
         {
@@ -108,18 +108,18 @@
 
         solarTex = ilutGLLoadImage((char*)solar);
 
-        GLfloat mat_specular[]={1.0,1.0,1.0,1.0};
-        GLfloat mat_shininess[]={50.0};
-        GLfloat light_position[]={1.0,1.0,1.0,0.0};
-        GLfloat white_light[]={1.0,1.0,1.0,1.0};
+        GLfloat matSpecular[]={1.0, 1.0, 1.0, 1.0};
+        GLfloat matShininess[]={50.0};
+        GLfloat lightPosition[]={1.0, 1.0, 1.0, 0.0};
+        GLfloat whiteLight[]={1.0, 1.0, 1.0, 1.0};
 
         glClearColor(0.0,0.0,0.0,0.0);
         glShadeModel(GL_SMOOTH);
-        glMaterialfv(GL_FRONT,GL_SPECULAR,mat_specular);
-        glMaterialfv(GL_FRONT,GL_SHININESS,mat_shininess);
-        glLightfv(GL_LIGHT0,GL_POSITION,light_position);
-        glLightfv(GL_LIGHT0,GL_DIFFUSE,white_light);
-        glLightfv(GL_LIGHT0,GL_SPECULAR,white_light);
+        glMaterialfv(GL_FRONT, GL_SPECULAR, matSpecular);
+        glMaterialfv(GL_FRONT, GL_SHININESS, matShininess);
+        glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
+        glLightfv(GL_LIGHT0, GL_DIFFUSE, whiteLight);
+        glLightfv(GL_LIGHT0, GL_SPECULAR, whiteLight);
 
         glEnable(GL_LIGHTING);
         glEnable(GL_LIGHT0);
@@ -139,16 +139,20 @@
         //сонце
 
         glPushMatrix();
+        glLightfv(GL_LIGHT0, GL_POSITION, position);
+        glDisable(GL_LIGHTING);
         glEnable(GL_TEXTURE_GEN_S);
         glEnable(GL_TEXTURE_GEN_T);
         glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
         glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+     // glRotatef(-spin1,0.0,0.1,0.0);
         glTranslatef(0.0,0.0,0.0);
         glBindTexture(GL_TEXTURE_2D,solarTex);
         glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_MODULATE);
         glutSolidSphere(digit*1,10,10);
         glDisable(GL_TEXTURE_GEN_S);
         glDisable(GL_TEXTURE_GEN_T);
+        glEnable(GL_LIGHTING);
         glPopMatrix();
         //меркурій
         glPushMatrix();
@@ -340,7 +344,7 @@
         glutInitDisplayMode( GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE );
         glutCreateWindow("SOLLAR SYSTEM");
 
-        DevILInit();
+        devIlInit();
         initTexture();
         LoadImage(planetTex);
 
@@ -351,13 +355,12 @@
         glutKeyboardFunc(keyboard);
         glutSpecialFunc(arrow_keys);
 
-    //glEnable(GL_DEPTH_TEST);
-    //glEnable(GL_COLOR_MATERIAL);
-    //glEnable(GL_LIGHTING);
-    //glEnable(GL_LIGHT0);
+        glEnable(GL_DEPTH_TEST);
+        glEnable(GL_COLOR_MATERIAL);
+        glEnable(GL_LIGHTING);
+        glEnable(GL_LIGHT0);
 
         glutIdleFunc(moving);
 
         glutMainLoop();
     }
-
