@@ -7,6 +7,6 @@ set(OpenGlLinkers -lglut -lGLU -lGL -lIL -lILU -lILUT) # setting all the Glut li
 
 ################################################
 
-add_executable(OpenGLLinuxTest1 main.cpp ) #common to all clion project
+add_executable(OpenGLLinuxTest1 main.cpp Breakout.cpp Breakout.h MyObjects.h config.h) #common to all clion project
 target_link_libraries(OpenGLLinuxTest1 ${OpenGlLinkers}) # linking opengl libraries to the project
 

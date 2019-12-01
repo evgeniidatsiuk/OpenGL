@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/OpenGLLinuxTest1.dir/Breakout.cpp.o"
   "CMakeFiles/OpenGLLinuxTest1.dir/main.cpp.o"
   "OpenGLLinuxTest1"
   "OpenGLLinuxTest1.pdb"
