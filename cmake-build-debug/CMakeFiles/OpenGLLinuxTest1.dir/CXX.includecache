@@ -6,29 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/x/c++/OpenGL/Breakout.cpp
-Breakout.h
-/home/x/c++/OpenGL/Breakout.h
-Breakout.h
-/home/x/c++/OpenGL/Breakout.h
-
-/home/x/c++/OpenGL/Breakout.h
-vector
--
+/home/x/c++/OpenGL/main.cpp
 iostream
 -
-stdlib.h
+stdio.h
 -
-math.h
+string.h
+-
+cmath
+-
+vector
 -
 GL/glut.h
 -
-MyObjects.h
-/home/x/c++/OpenGL/MyObjects.h
-config.h
-/home/x/c++/OpenGL/config.h
-
-/home/x/c++/OpenGL/MyObjects.h
-
-/home/x/c++/OpenGL/config.h
+IL/il.h
+-
+IL/ilut.h
+-
+IL/ilu.h
+-
 

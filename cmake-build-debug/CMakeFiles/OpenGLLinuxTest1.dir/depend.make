@@ -6,7 +6,5 @@ CMakeFiles/OpenGLLinuxTest1.dir/Breakout.cpp.o: ../Breakout.h
 CMakeFiles/OpenGLLinuxTest1.dir/Breakout.cpp.o: ../MyObjects.h
 CMakeFiles/OpenGLLinuxTest1.dir/Breakout.cpp.o: ../config.h
 
-CMakeFiles/OpenGLLinuxTest1.dir/main.cpp.o: ../Breakout.h
-CMakeFiles/OpenGLLinuxTest1.dir/main.cpp.o: ../MyObjects.h
 CMakeFiles/OpenGLLinuxTest1.dir/main.cpp.o: ../main.cpp
 
