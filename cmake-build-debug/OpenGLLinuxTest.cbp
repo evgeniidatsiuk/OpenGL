@@ -8,98 +8,86 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/x/c++/OpenGL/cmake-build-debug"/>
+				<Option working_dir="/home/x/c++/OpenGL/OpenGL/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/x/c++/OpenGL/cmake-build-debug"/>
+				<Option working_dir="/home/x/c++/OpenGL/OpenGL/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="OpenGLLinuxTest1">
-				<Option output="/home/x/c++/OpenGL/cmake-build-debug/OpenGLLinuxTest1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/x/c++/OpenGL/cmake-build-debug"/>
+				<Option output="/home/x/c++/OpenGL/OpenGL/cmake-build-debug/OpenGLLinuxTest1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/x/c++/OpenGL/OpenGL/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/include/c++/8"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
-					<Add directory="/usr/include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
 					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 OpenGLLinuxTest1"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 OpenGLLinuxTest1"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="OpenGLLinuxTest1/fast">
-				<Option output="/home/x/c++/OpenGL/cmake-build-debug/OpenGLLinuxTest1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/x/c++/OpenGL/cmake-build-debug"/>
+				<Option output="/home/x/c++/OpenGL/OpenGL/cmake-build-debug/OpenGLLinuxTest1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/x/c++/OpenGL/OpenGL/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/include/c++/8"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
-					<Add directory="/usr/include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
 					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 OpenGLLinuxTest1/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 OpenGLLinuxTest1/fast"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/x/c++/OpenGL/cmake-build-debug"/>
+				<Option working_dir="/home/x/c++/OpenGL/OpenGL/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/x/c++/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/x/c++/OpenGL/OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/x/c++/OpenGL/Breakout.cpp">
+		<Unit filename="/home/x/c++/OpenGL/OpenGL/main.cpp">
 			<Option target="OpenGLLinuxTest1"/>
 		</Unit>
-		<Unit filename="/home/x/c++/OpenGL/Breakout.h">
-			<Option target="OpenGLLinuxTest1"/>
-		</Unit>
-		<Unit filename="/home/x/c++/OpenGL/MyObjects.h">
-			<Option target="OpenGLLinuxTest1"/>
-		</Unit>
-		<Unit filename="/home/x/c++/OpenGL/config.h">
-			<Option target="OpenGLLinuxTest1"/>
-		</Unit>
-		<Unit filename="/home/x/c++/OpenGL/main.cpp">
-			<Option target="OpenGLLinuxTest1"/>
-		</Unit>
-		<Unit filename="/home/x/c++/OpenGL/CMakeLists.txt">
+		<Unit filename="/home/x/c++/OpenGL/OpenGL/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/x/c++/OpenGL/main.cpp
+/home/x/c++/OpenGL/OpenGL/main.cpp
 iostream
 -
 stdio.h

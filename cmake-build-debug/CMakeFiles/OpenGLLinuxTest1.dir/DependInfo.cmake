@@ -4,8 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/x/c++/OpenGL/Breakout.cpp" "/home/x/c++/OpenGL/cmake-build-debug/CMakeFiles/OpenGLLinuxTest1.dir/Breakout.cpp.o"
-  "/home/x/c++/OpenGL/main.cpp" "/home/x/c++/OpenGL/cmake-build-debug/CMakeFiles/OpenGLLinuxTest1.dir/main.cpp.o"
+  "/home/x/c++/OpenGL/OpenGL/main.cpp" "/home/x/c++/OpenGL/OpenGL/cmake-build-debug/CMakeFiles/OpenGLLinuxTest1.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
