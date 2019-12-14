@@ -17,9 +17,9 @@ GLuint backgroundTex, moonTex, platformTex;
 
 float plane_s[] = {1.0,0.0,0.0,0.0};
 float plane_t[] = {0.0,1.0,0.0,0.0};
-const char background[] = "/home/x/c++/OpenGL/1.jpg";
-const char moon[] = "/home/x/c++/OpenGL/2.jpg";
-const char platform[] = "/home/x/c++/OpenGL/3.jpg";
+const char background[] = "/home/x/c++/OpenGL/1.jpg"; // cube
+const char moon[] = "/home/x/c++/OpenGL/2.jpg"; // ball
+const char platform[] = "/home/x/c++/OpenGL/3.jpg"; // player
 
 int DevILInit()
 {
@@ -46,7 +46,7 @@ int DevILInit()
 void initTexture()
 {
 	glPixelStorei(GL_UNPACK_ALIGNMENT,1);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
+  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
@@ -111,6 +111,29 @@ cubes.push_back(cube());
 cubes[5].x=0;
 cubes[5].y=2;
 
+    cubes.push_back(cube());
+    cubes[6].x=1;
+    cubes[6].y=2;
+
+    cubes.push_back(cube());
+    cubes[7].x=2;
+    cubes[7].y=2;
+
+    cubes.push_back(cube());
+    cubes[8].x=3;
+    cubes[8].y=2;
+    cubes.push_back(cube());
+    cubes[9].x=1;
+    cubes[9].y=3;
+
+    cubes.push_back(cube());
+    cubes[10].x=2;
+    cubes[10].y=3;
+
+    cubes.push_back(cube());
+    cubes[11].x=3;
+    cubes[11].y=3;
+
 
 cubes.push_back(cube());
 cubes[6].x=1;
@@ -144,7 +167,7 @@ glBindTexture(GL_TEXTURE_2D,backgroundTex);
     glPushMatrix();
     glBindTexture(GL_TEXTURE_2D,moonTex);
         glTranslatef(b_y,b_x,0.0);
-        glutSolidSphere(0.5,20,20);
+        glutSolidSphere(0.2,20,20);
     glPopMatrix();
 
     glPushMatrix();
@@ -172,20 +195,25 @@ void moving(void)
 {
 b_x+=s_x/1000*speed;
 
-if(b_x>=border_l||b_x<=border_r){
+if(b_x>border_l||b_x<border_r){
     s_x*=(-1);
     b_x+=s_x/1000*speed;
+    cout<<"b_x>border_l||b_x<border_r"<<"\n";
 }
 b_y+=s_y/1000*speed;
 if(b_y>=5){
     s_y*=(-1);
     b_y+=s_y/1000*speed;
+    cout<<"b_y>=5"<<"\n";
+
 }else{
     if(b_y<=p_y+p_w&&b_x>=p_x-p_w&&b_x<=p_x+p_w){
     s_y=p_y-b_y;
     s_x=b_x-p_x;
     s_y*=(-1);
     b_y+=s_y/1000*speed;
+        cout<<"b_y<=p_y+p_w&&b_x>=p_x-p_w&&b_x<=p_x+p_w"<<"\n";
+
     }
 }
 if(b_y<=p_y){
@@ -194,18 +222,28 @@ if(b_y<=p_y){
     b_y=-2.0;
     s_x=0.0;
     p_x=0.0;
-    score++;
-    cout<<score;
+    cout<<"b_y<=p_y"<<"\n";
+
 }
+
  for(int i=0;i<cubes.size();i++){
     if(crash(cubes[i])){
         cubes.erase(cubes.begin() + i);
-        //s_x*=(-1);
+        s_x*=(-1);
         s_y*=(-1);
+        score++;
 
+        if (cubes.size() == 0) {
+            cout<<"YOU WIN";
+            exit (0);
         }
+        else{
+            cout<<"score:  " << score <<"Живих залишилося: "<<cubes.size() << "\n";
+        }
+    }
 
 }
+
 glutPostRedisplay();
 }
 
@@ -244,7 +282,7 @@ glutInit(&argc, argv);
 glutInitWindowPosition(50, 50);
 glutInitWindowSize(640, 480);
 glutInitDisplayMode( GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE );
-glutCreateWindow("OpenGL1 Window");
+glutCreateWindow("Lab 7");
 DevILInit();
 initTexture();
 glutIdleFunc(display);
