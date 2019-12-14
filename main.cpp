@@ -13,14 +13,15 @@
 
 using namespace std;
 
-GLuint backgroundTex, moonTex, bumTex, platformTex;
+GLuint cubicTex, ballText, bumTex, playerTex;
 
 float plane_s[] = {1.0,0.0,0.0,0.0};
 float plane_t[] = {0.0,1.0,0.0,0.0};
-const char background[] = "/home/x/c++/OpenGL/1.jpg"; // cube
-const char moon[] = "/home/x/c++/OpenGL/2.jpg"; // ball
-const char platform[] = "/home/x/c++/OpenGL/3.jpg"; // player
-const char bum[] = "/home/x/c++/OpenGL/bum.jpg"; // player
+
+const char cubic[] = "/home/x/c++/OpenGL/OpenGL/1.jpg"; // cube
+const char ballic[] = "/home/x/c++/OpenGL/OpenGL/2.jpg"; // ball
+const char player[] = "/home/x/c++/OpenGL/OpenGL/3.jpg"; // player
+const char bum[] = "/home/x/c++/OpenGL/OpenGL/bum.jpg"; // bum
 
 int DevILInit()
 {
@@ -47,28 +48,28 @@ int DevILInit()
 void initTexture()
 {
 	glPixelStorei(GL_UNPACK_ALIGNMENT,1);
-  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
 
-	platformTex = ilutGLLoadImage((char*)platform);
-	moonTex = ilutGLLoadImage((char*)moon);
-    backgroundTex = ilutGLLoadImage((char*)background);
+    playerTex = ilutGLLoadImage((char*)player);
+    ballText = ilutGLLoadImage((char*)ballic);
+    cubicTex = ilutGLLoadImage((char*)cubic);
     bumTex = ilutGLLoadImage((char*)bum);
 }
 
 
 void resize(int w,int h)
 {
-if (h == 0) h = 1;
-float ratio=w*1.0/h;
-glViewport(0,0,w,h);
-glMatrixMode( GL_PROJECTION );
-glLoadIdentity();
-gluPerspective(90.0, ratio, 0.1,100);
-gluLookAt( 0,0,5, 0,0,0, 1,0,0 );
-glMatrixMode( GL_MODELVIEW );
+    if (h == 0) h = 1;
+    float ratio=w*1.0/h;
+    glViewport(0,0,w,h);
+    glMatrixMode( GL_PROJECTION );
+    glLoadIdentity();
+    gluPerspective(90.0, ratio, 0.1,100);
+    gluLookAt( 0,0,5, 0,0,0, 1,0,0 );
+    glMatrixMode( GL_MODELVIEW );
 }
 
 int score = 0;
@@ -201,7 +202,7 @@ glTexGenfv(GL_T, GL_OBJECT_PLANE, plane_t);
 glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_MODULATE);
 
 
-glBindTexture(GL_TEXTURE_2D,backgroundTex);
+glBindTexture(GL_TEXTURE_2D, cubicTex);
     for(int i=0;i<cubes.size();i++){
         glPushMatrix();
             glTranslatef(cubes[i].y,cubes[i].x,0.0);
@@ -210,13 +211,13 @@ glBindTexture(GL_TEXTURE_2D,backgroundTex);
     }
 
     glPushMatrix();
-    glBindTexture(GL_TEXTURE_2D,moonTex);
+    glBindTexture(GL_TEXTURE_2D, ballText);
         glTranslatef(b_y,b_x,0.0);
         glutSolidSphere(0.2,20,20);
     glPopMatrix();
 
     glPushMatrix();
-        glBindTexture(GL_TEXTURE_2D,platformTex);
+        glBindTexture(GL_TEXTURE_2D, playerTex);
         glTranslatef(p_y,p_x,0.0);
         glutSolidCube(p_w);
     glPopMatrix();
@@ -275,7 +276,9 @@ if(b_y<=p_y){
 
  for(int i=0;i<cubes.size();i++){
     if(crash(cubes[i])){
+        //boom
         cubeBum(i);
+        // delete cube[i]
         cubes.erase(cubes.begin() + i);
         s_x*=(-1);
         s_y*=(-1);
@@ -286,7 +289,7 @@ if(b_y<=p_y){
             exit (0);
         }
         else{
-            cout<<"score:  " << score <<"Живих залишилося: "<<cubes.size() << "\n";
+            cout<<"score:  " << score <<" Живих залишилося: "<<cubes.size() << "\n";
         }
     }
 
