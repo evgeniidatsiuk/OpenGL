@@ -13,13 +13,14 @@
 
 using namespace std;
 
-GLuint backgroundTex, moonTex, platformTex;
+GLuint backgroundTex, moonTex, bumTex, platformTex;
 
 float plane_s[] = {1.0,0.0,0.0,0.0};
 float plane_t[] = {0.0,1.0,0.0,0.0};
 const char background[] = "/home/x/c++/OpenGL/1.jpg"; // cube
 const char moon[] = "/home/x/c++/OpenGL/2.jpg"; // ball
 const char platform[] = "/home/x/c++/OpenGL/3.jpg"; // player
+const char bum[] = "/home/x/c++/OpenGL/bum.jpg"; // player
 
 int DevILInit()
 {
@@ -54,6 +55,7 @@ void initTexture()
 	platformTex = ilutGLLoadImage((char*)platform);
 	moonTex = ilutGLLoadImage((char*)moon);
     backgroundTex = ilutGLLoadImage((char*)background);
+    bumTex = ilutGLLoadImage((char*)bum);
 }
 
 
@@ -141,6 +143,48 @@ cubes[6].y=2;
 
 }
 
+struct boom {
+    float x;
+    float y;
+    float s=1;
+};
+
+vector<boom> bums;
+
+void cubeBum(int i){
+    bums.push_back(boom());
+    bums[bums.size()-1].x=cubes[i].x;
+    bums[bums.size()-1].y=cubes[i].y;
+}
+void showBums(){
+    glColor3f(1,1,1);
+    glEnable(GL_TEXTURE_2D);
+    glPushMatrix();
+
+
+    glBindTexture(GL_TEXTURE_2D, bumTex);
+    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+
+    for(int i=0;i<bums.size();i++){
+
+        glBegin(GL_QUADS);
+        glTexCoord2f(0.0, 0.0);glVertex3f(bums[i].x-bums[i].s, bums[i].y-bums[i].s, 0.0);
+        glTexCoord2f(1.0, 0.0);glVertex3f(bums[i].x+bums[i].s, bums[i].y-bums[i].s, 0.0);
+        glTexCoord2f(1.0, 1.0);glVertex3f(bums[i].x+bums[i].s, bums[i].y+bums[i].s, 0.0);
+        glTexCoord2f(0.0, 1.0);glVertex3f(bums[i].x-bums[i].s, bums[i].y+bums[i].s, 0.0);
+        glEnd();
+
+        //delete bum
+        bums[i].s-=0.1;
+        if(bums[i].s<0) bums.erase(bums.begin() + i);
+
+    }
+
+    glPopMatrix();
+    glDisable(GL_TEXTURE_2D);
+}
+
+
 void display(void)
 {
 glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -155,6 +199,7 @@ glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
 glTexGenfv(GL_S, GL_OBJECT_PLANE, plane_s);
 glTexGenfv(GL_T, GL_OBJECT_PLANE, plane_t);
 glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_MODULATE);
+
 
 glBindTexture(GL_TEXTURE_2D,backgroundTex);
     for(int i=0;i<cubes.size();i++){
@@ -180,6 +225,8 @@ glDisable(GL_TEXTURE_GEN_T);
 glPopMatrix();
 
 glDisable(GL_TEXTURE_2D);
+
+showBums();
 glutSwapBuffers();
 }
 
@@ -228,6 +275,7 @@ if(b_y<=p_y){
 
  for(int i=0;i<cubes.size();i++){
     if(crash(cubes[i])){
+        cubeBum(i);
         cubes.erase(cubes.begin() + i);
         s_x*=(-1);
         s_y*=(-1);
